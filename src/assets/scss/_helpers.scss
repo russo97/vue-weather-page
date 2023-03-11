@@ -1,0 +1,12 @@
+
+@each $display in (flex) {
+  .#{$display} {
+    display: $display;
+  }
+}
+
+@each $dir in (width, height) {
+  .#{str-slice($dir, 0, 1)}-full {
+    #{$dir}: 100%;
+  }
+}
