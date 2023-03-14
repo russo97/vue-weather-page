@@ -10,3 +10,9 @@
     #{$dir}: 100%;
   }
 }
+
+@each $position in (relative, absolute) {
+  .#{$position} {
+    position: $position;
+  }
+}
