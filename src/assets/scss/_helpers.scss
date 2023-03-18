@@ -5,6 +5,12 @@
   }
 }
 
+@each $alignment in (center) {
+  .items-#{$alignment} {
+    align-items: $alignment;
+  }
+}
+
 @each $dir in (width, height) {
   .#{str-slice($dir, 0, 1)}-full {
     #{$dir}: 100%;
@@ -14,5 +20,39 @@
 @each $position in (relative, absolute) {
   .#{$position} {
     position: $position;
+  }
+}
+
+@each $quantity in (3, 5) {
+  $newQuantity: $quantity * 4px;
+
+  .p-#{$quantity} {
+    padding: $newQuantity;
+  }
+
+  .pe-#{$quantity} {
+    padding-right: $newQuantity;
+  }
+
+  .me-#{$quantity} {
+    margin-right: $newQuantity;
+  }
+
+  .mt-#{$quantity} {
+    margin-top: $newQuantity;
+  }
+}
+
+.fit-content {
+  width: fit-content;
+}
+
+.ms-auto {
+  margin-left: auto;
+}
+
+@each $cursor in (pointer) {
+  .cursor-#{$cursor} {
+    cursor: $cursor;
   }
 }

@@ -1,12 +1,16 @@
 <template>
   <section class="curweather">
-    <div class="curweather__wrapper w-full h-full relative">
+    <div class="curweather__wrapper flex w-full h-full relative p-3">
       <LazyPrimaryCloudIcon
         class="curweather__cloud curweather__cloud--primary absolute"
       />
 
       <LazySecondaryCloudIcon
         class="curweather__cloud curweather__cloud--secondary absolute"
+      />
+
+      <LazyLocation
+        class="ms-auto me-5 mt-5"
       />
     </div>
   </section>
@@ -16,17 +20,22 @@
 import { defineComponent, defineAsyncComponent } from 'vue'
 
 const LazyPrimaryCloudIcon = defineAsyncComponent(() => import(
-  /* webpackChunkName: "lazy-primary-cloud-icon" */ '@/components/icons/primary-cloud/index.vue'
+  /* viteChunkName: "lazy-primary-cloud-icon" */ '@/components/icons/primary-cloud/index.vue'
 ))
 
 const LazySecondaryCloudIcon = defineAsyncComponent(() => import(
   /* webpackChunkName: "lazy-secondary-cloud-icon" */ '@/components/icons/secondary-cloud/index.vue'
 ))
 
+const LazyLocation = defineAsyncComponent(() => import(
+  /* webpackChunkName: "lazy-location" */ './components/location/index.vue'
+))
+
 export default defineComponent({
   name: 'CurrentWeather',
 
   components: {
+    LazyLocation,
     LazyPrimaryCloudIcon,
     LazySecondaryCloudIcon
   },
@@ -49,12 +58,13 @@ export default defineComponent({
     }
 
     &__cloud {
+      top: 0;
+      left: 0;
+
       &--primary {
         z-index: 2;
         fill: var(--white);
         width: 27.4%;
-        top: 0;
-        left: 0;
         transform: translate(-36.496%, -8.363%);
       }
 
@@ -62,8 +72,6 @@ export default defineComponent({
         z-index: 1;
         fill: var(--gray1);
         width: 22.725%;
-        top: 0;
-        left: 0;
         transform: translate(2.750%, -22.984%);
       }
     }
