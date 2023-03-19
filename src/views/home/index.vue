@@ -18,7 +18,7 @@ import { defineComponent, defineAsyncComponent } from 'vue'
 const LazyCurrentWeather = defineAsyncComponent({
   loader: () => import(
     /* webpackChunkName: "lazy-current-weather" */ '@/components/current-weather/index.vue'
-    )
+  )
 })
 
 export default defineComponent({

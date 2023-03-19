@@ -11,6 +11,18 @@
   }
 }
 
+@each $justify in (center, space-between) {
+  $justify-prop: $justify;
+
+  @if str-slice($justify, 0, 6) == "space-" {
+    $justify-prop: str-slice($justify, 7);
+  }
+
+  .justify-#{$justify-prop} {
+    justify-content: $justify;
+  }
+}
+
 @each $dir in (width, height) {
   .#{str-slice($dir, 0, 1)}-full {
     #{$dir}: 100%;
@@ -45,6 +57,10 @@
 
 .fit-content {
   width: fit-content;
+}
+
+.flex-column {
+  flex-direction: column;
 }
 
 .ms-auto {

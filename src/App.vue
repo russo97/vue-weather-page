@@ -25,7 +25,7 @@ export default defineComponent({
     background: transparent url("./assets/images/background.webp") center / cover no-repeat;
 
     &__wrapper {
-      padding: 32px 32px 0;
+      padding: min(2.5vw, 32px) min(2.5vw, 32px) 0;
     }
   }
 </style>

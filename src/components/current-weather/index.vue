@@ -1,6 +1,6 @@
 <template>
   <section class="curweather">
-    <div class="curweather__wrapper flex w-full h-full relative p-3">
+    <div class="curweather__wrapper flex flex-column w-full h-full relative p-3">
       <LazyPrimaryCloudIcon
         class="curweather__cloud curweather__cloud--primary absolute"
       />
@@ -12,6 +12,8 @@
       <LazyLocation
         class="ms-auto me-5 mt-5"
       />
+
+      <LazyCurrentTemperature />
     </div>
   </section>
 </template>
@@ -31,13 +33,18 @@ const LazyLocation = defineAsyncComponent(() => import(
   /* webpackChunkName: "lazy-location" */ './components/location/index.vue'
 ))
 
+const LazyCurrentTemperature = defineAsyncComponent(() => import(
+  '@/components/current-temperature/index.vue'
+))
+
 export default defineComponent({
   name: 'CurrentWeather',
 
   components: {
     LazyLocation,
     LazyPrimaryCloudIcon,
-    LazySecondaryCloudIcon
+    LazySecondaryCloudIcon,
+    LazyCurrentTemperature
   },
 
   async setup () {
